@@ -7,24 +7,30 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class CustomersService {
+  constructor(
+    @InjectRepository(Customer)
+    private readonly customerRepository: Repository<Customer>,
+  ) { }
 
-  create(createCustomerDto: CreateCustomerDto) {
-    return 'This action adds a new customer';
+  async create(createCustomerDto: CreateCustomerDto) {
+    const customer = this.customerRepository.create(createCustomerDto);
+    return await this.customerRepository.save(customer);
   }
 
-  findAll() {
-    return `This action returns all customers`;
+  async findAll() {
+    return await this.customerRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} customer`;
+  async findOne(id: number) {
+    return await this.customerRepository.findOneBy({ cliente_id: id });
   }
 
-  update(id: number, updateCustomerDto: UpdateCustomerDto) {
-    return `This action updates a #${id} customer`;
+  async update(id: number, updateCustomerDto: UpdateCustomerDto) {
+    await this.customerRepository.update(id, updateCustomerDto);
+    return this.findOne(id);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} customer`;
+  async remove(id: number) {
+    return await this.customerRepository.softDelete(id);
   }
 }

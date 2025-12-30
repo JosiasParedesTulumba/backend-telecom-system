@@ -3,12 +3,14 @@ import { CustomersService } from './customers.service';
 import { CustomersController } from './customers.controller';
 import { Customer } from './entities/customer.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ApiPeruModule } from 'src/common/api-peru/api-peru.module';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([Customer]),
+    ApiPeruModule,
   ],
   controllers: [CustomersController],
   providers: [CustomersService],
 })
-export class CustomersModule {}
+export class CustomersModule { }

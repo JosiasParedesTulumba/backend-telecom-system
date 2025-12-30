@@ -1,5 +1,5 @@
 import { User } from "src/users/entities/user.entity";
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, DeleteDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 export enum TipoDocumento {
     DNI = 'DNI',
@@ -46,5 +46,8 @@ export class Customer {
     @ManyToOne(() => User)
     @JoinColumn({ name: 'created_by' })
     creator: User;
+
+    @DeleteDateColumn({ name: 'deleted_at' })
+    deleted_at: Date;
 }
 
