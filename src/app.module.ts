@@ -25,7 +25,7 @@ import { ShoppingModule } from './shopping/shopping.module';
       database: 'bd_telecom_system',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
-      logging: false,
+      logging: true,
     }),
     AuthModule,
     UsersModule,

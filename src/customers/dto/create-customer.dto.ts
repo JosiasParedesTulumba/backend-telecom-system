@@ -8,31 +8,32 @@ export class CreateCustomerDto {
     tipo_documento: TipoDocumento;
 
     @IsNotEmpty()
-    @IsNumber()
-    numero_documento: number;
+    @IsString()
+    @Length(1, 20)
+    numero_documento: string;
 
     @IsNotEmpty()
     @IsString()
     @Length(1, 255)
     nombre: string;
 
-    @IsNotEmpty()
+    @IsOptional()
     @IsString()
     @Length(1, 255)
-    razon_social: string;
+    razon_social?: string;
 
-    @IsNotEmpty()
+    @IsOptional()
     @IsString()
     @Length(1, 255)
-    direccion: string;
+    direccion?: string;
 
-    @IsNotEmpty()
+    @IsOptional()
     @IsString()
-    telefono: string;
+    telefono?: string;
 
-    @IsNotEmpty()
+    @IsOptional()
     @IsEmail()
-    email: string;
+    email?: string;
 
     @IsOptional()
     @IsNumber()

@@ -16,22 +16,22 @@ export class Customer {
     @Column({ name: 'tipo_documento', type: 'enum', enum: TipoDocumento })
     tipo_documento: TipoDocumento;
 
-    @Column({ name: 'numero_documento' })
-    numero_documento: number;
+    @Column({ name: 'numero_documento', length: 20 })
+    numero_documento: string;
 
     @Column({ name: 'nombre_completo', length: 255 })
     nombre: string;
 
-    @Column({ name: 'razon_social', length: 255 })
+    @Column({ name: 'razon_social', length: 255, nullable: true })
     razon_social: string;
 
-    @Column({ name: 'direccion', length: 255 })
+    @Column({ name: 'direccion', length: 255, nullable: true })
     direccion: string;
 
-    @Column({ name: 'telefono' })
+    @Column({ name: 'telefono', nullable: true })
     telefono: string;
 
-    @Column({ name: 'email', length: 255 })
+    @Column({ name: 'email', length: 255, nullable: true })
     email: string;
 
     @Column({ name: 'estado', type: 'tinyint', default: 1 })
